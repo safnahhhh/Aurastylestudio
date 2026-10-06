@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-50">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meesho AI Outfit Finds | YouTube Channel Catalog</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        meesho: {
+                            50: '#fdf2f8',
+                            100: '#fce7f3',
+                            500: '#ec4899',
+                            600: '#db2777',
+                            700: '#be185d',
+                            900: '#831843'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="h-full font-sans text-slate-800 flex flex-col antialiased">
+
+    <div class="bg-gradient-to-r from-purple-700 via-meesho-600 to-pink-600 text-white py-2 px-4 text-center text-sm font-medium shadow-sm">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <span class="hidden sm:inline-block">✨ As seen on our YouTube Channel! AI Unboxing & Try-On Hauls</span>
+            <span class="sm:hidden">✨ Official YouTube Outfit Store</span>
+            <a href="https://youtube.com" target="_blank" class="inline-flex items-center gap-1.5 bg-white/20 hover:bg-white/30 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold transition-all">
+                <i class="fab fa-youtube text-red-400"></i> Visit Channel
+            </a>
+        </div>
+    </div>
+
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+            <!-- Brand Logo -->
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-meesho-600 to-purple-600 flex items-center justify-center text-white font-bold text-xl shadow-md shadow-meesho-500/20">
+                    <i class="fas fa-bag-shopping"></i>
+                </div>
+                <div>
+                    <h1 class="font-extrabold text-lg sm:text-xl tracking-tight text-slate-900 leading-none">
+                        Aura<span class="text-meesho-600">Style</span>
+                    </h1>
+                    <p class="text-[10px] text-slate-500 font-medium">Meesho Outfit Storefront</p>
+                </div>
+            </div>
+
+            <!-- Search Input -->
+            <div class="flex-1 max-w-md hidden md:block">
+                <div class="relative">
+                    <i class="fas fa-search absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                    <input type="text" id="searchInput" oninput="handleSearch()" placeholder="Search outfit title or Meesho code (e.g. s-284910)..." class="w-full pl-10 pr-4 py-2 bg-slate-100 hover:bg-slate-100/80 focus:bg-white text-sm rounded-full border border-transparent focus:border-meesho-500 focus:outline-none focus:ring-2 focus:ring-meesho-500/20 transition-all">
+                </div>
+            </div>
+
+            <!-- Add Outfit Action Button -->
+            <div class="flex items-center gap-2">
+                <button onclick="openAddModal()" class="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded-full font-semibold text-sm transition-all shadow-sm active:scale-95">
+                    <i class="fas fa-plus text-xs"></i>
+                    <span>Add Outfit</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Search Bar -->
+        <div class="px-4 pb-3 md:hidden">
+            <div class="relative">
+                <i class="fas fa-search absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                <input type="text" id="mobileSearchInput" oninput="handleMobileSearch()" placeholder="Search outfit title or code..." class="w-full pl-10 pr-4 py-2 bg-slate-100 text-sm rounded-full border border-transparent focus:border-meesho-500 focus:outline-none">
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col gap-6">
+
+        <!-- Category Pill Filters -->
+        <div class="flex items-center gap-2 overflow-x-auto pb-2 custom-scrollbar no-scrollbar">
+            <button onclick="filterCategory('All')" class="category-btn active bg-slate-900 text-white px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all shadow-xs" data-category="All">
+                🔥 All Finds
+            </button>
+            <button onclick="filterCategory('Ethnic Wear')" class="category-btn bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all" data-category="Ethnic Wear">
+                👗 Ethnic Wear
+            </button>
+            <button onclick="filterCategory('Kurti Sets')" class="category-btn bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all" data-category="Kurti Sets">
+                ✨ Kurti Sets
+            </button>
+            <button onclick="filterCategory('Western Wear')" class="category-btn bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all" data-category="Western Wear">
+                👚 Western Wear
+            </button>
+            <button onclick="filterCategory('Sarees')" class="category-btn bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all" data-category="Sarees">
+                🥻 Sarees
+            </button>
+            <button onclick="filterCategory('Under ₹499')" class="category-btn bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all" data-category="Under ₹499">
+                🏷️️ Under ₹499
+            </button>
+        </div>
+
+        <!-- Outfits Grid Container -->
+        <div>
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                    <span>Featured Outfits</span>
+                    <span id="outfitCountBadge" class="bg-meesho-100 text-meesho-700 text-xs px-2 py-0.5 rounded-full font-bold">0</span>
+                </h2>
+                <span class="text-xs text-slate-500">Updated Daily</span>
+            </div>
+
+            <!-- Grid output -->
+            <div id="outfitsGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6">
+                <!-- Cards will be dynamically injected here -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="emptyState" class="hidden text-center py-16 bg-white rounded-2xl border border-dashed border-slate-200">
+                <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-3 text-slate-400 text-2xl">
+                    <i class="fas fa-shirt"></i>
+                </div>
+                <h3 class="text-base font-bold text-slate-800">No outfits found</h3>
+                <p class="text-xs text-slate-500 mt-1 max-w-xs mx-auto">Try altering your search keyword or selecting a different category.</p>
+                <button onclick="resetFilters()" class="mt-4 text-xs font-bold text-meesho-600 hover:text-meesho-700 underline">Clear Filters</button>
+            </div>
+        </div>
+    </main>
+
+    <div id="addModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-200">
+        <div class="bg-white w-full max-w-lg rounded-2xl shadow-2xl border border-slate-100 overflow-hidden transform scale-95 transition-all duration-200" id="modalContainer">
+            <!-- Modal Header -->
+            <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between bg-slate-50">
+                <div>
+                    <h3 class="font-bold text-slate-900 text-base">Add New Outfit</h3>
+                    <p class="text-xs text-slate-500">Upload a new item to your showcase catalog</p>
+                </div>
+                <button onclick="closeAddModal()" class="w-8 h-8 rounded-full bg-white hover:bg-slate-200 flex items-center justify-center text-slate-500 transition-colors">
+                    <i class="fas fa-times text-sm"></i>
+                </button>
+            </div>
+
+            <!-- Modal Form -->
+            <form id="addOutfitForm" onsubmit="handleAddOutfit(event)" class="p-6 space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Outfit Title *</label>
+                    <input type="text" id="outfitTitle" required placeholder="e.g. Floral Print Anarkali Kurti Set" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:bg-white focus:border-meesho-500 focus:outline-none">
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Price (₹) *</label>
+                        <input type="number" id="outfitPrice" required placeholder="499" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:bg-white focus:border-meesho-500 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Meesho Code *</label>
+                        <input type="text" id="outfitCode" required placeholder="s-29481023" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:bg-white focus:border-meesho-500 focus:outline-none">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Category *</label>
+                        <select id="outfitCategory" required class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:bg-white focus:border-meesho-500 focus:outline-none">
+                            <option value="Ethnic Wear">Ethnic Wear</option>
+                            <option value="Kurti Sets">Kurti Sets</option>
+                            <option value="Western Wear">Western Wear</option>
+                            <option value="Sarees">Sarees</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Image URL *</label>
+                        <input type="url" id="outfitImageUrl" required placeholder="https://images.unsplash.com/..." class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:bg-white focus:border-meesho-500 focus:outline-none">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Meesho Affiliate / Product Link *</label>
+                    <input type="url" id="outfitLink" required placeholder="https://meesho.com/..." class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:bg-white focus:border-meesho-500 focus:outline-none">
+                </div>
+
+                <!-- Form Action Buttons -->
+                <div class="pt-3 flex items-center justify-end gap-3 border-t border-slate-100">
+                    <button type="button" onclick="closeAddModal()" class="px-4 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-100 rounded-lg transition-colors">Cancel</button>
+                    <button type="submit" class="px-5 py-2 text-xs font-semibold bg-meesho-600 hover:bg-meesho-700 text-white rounded-lg transition-colors shadow-md shadow-meesho-500/20">Add to Catalog</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="toast" class="fixed bottom-5 right-5 bg-slate-900 text-white text-xs font-semibold px-4 py-3 rounded-xl shadow-xl flex items-center gap-2 transform translate-y-20 opacity-0 transition-all duration-300 z-50">
+        <i class="fas fa-check-circle text-green-400"></i>
+        <span id="toastMsg">Outfit added successfully!</span>
+    </div>
+
+    <script>
+        // Initial Sample Data
+        let outfits = [
+            {
+                id: 1,
+                title: "Pink Embroidered Anarkali Kurta Set",
+                price: 599,
+                code: "s-18294021",
+                category: "Ethnic Wear",
+                image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&q=80&w=600",
+                link: "https://meesho.com"
+            },
+            {
+                id: 2,
+                title: "Floral Printed Cotton Kurti with Dupatta",
+                price: 449,
+                code: "s-20941823",
+                category: "Kurti Sets",
+                image: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&q=80&w=600",
+                link: "https://meesho.com"
+            },
+            {
+                id: 3,
+                title: "Modern Casual Denim Jacket Outfit",
+                price: 699,
+                code: "s-39481029",
+                category: "Western Wear",
+                image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=600",
+                link: "https://meesho.com"
+            },
+            {
+                id: 4,
+                title: "Traditional Chiffon Printed Saree",
+                price: 399,
+                code: "s-10492811",
+                category: "Sarees",
+                image: "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&q=80&w=600",
+                link: "https://meesho.com"
+            },
+            {
+                id: 5,
+                title: "Stylish Sleeveless Summer Bodycon Dress",
+                price: 349,
+                code: "s-48102934",
+                category: "Western Wear",
+                image: "https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&q=80&w=600",
+                link: "https://meesho.com"
+            }
+        ];
+
+        let currentCategory = 'All';
+        let searchQuery = '';
+
+        function renderGrid() {
+            const grid = document.getElementById('outfitsGrid');
+            const emptyState = document.getElementById('emptyState');
+            const outfitCountBadge = document.getElementById('outfitCountBadge');
+
+            // Filter logic
+            const filtered = outfits.filter(item => {
+                const matchesCategory = 
+                    currentCategory === 'All' ? true :
+                    currentCategory === 'Under ₹499' ? item.price <= 499 :
+                    item.category === currentCategory;
+
+                const matchesSearch = 
+                    item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    item.code.toLowerCase().includes(searchQuery.toLowerCase());
+
+                return matchesCategory && matchesSearch;
+            });
+
+            outfitCountBadge.innerText = filtered.length;
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+
+            grid.innerHTML = filtered.map(item => `
+                <div class="bg-white rounded-xl border border-slate-200/80 overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col group">
+                    <!-- Image Container -->
+                    <div class="relative aspect-[3/4] bg-slate-100 overflow-hidden">
+                        <img src="${item.image}" alt="${item.title}" onerror="this.src='https://placehold.co/400x500/f1f5f9/94a3b8?text=Outfit+Photo'" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-2.5 left-2.5 bg-white/90 backdrop-blur-md text-slate-900 text-[10px] font-bold px-2 py-0.5 rounded-md shadow-xs">
+                            ${item.category}
+                        </span>
+                        <button onclick="copyCode('${item.code}')" class="absolute top-2.5 right-2.5 bg-slate-900/70 hover:bg-slate-900 text-white w-7 h-7 rounded-full flex items-center justify-center text-xs transition-colors" title="Copy Meesho Code">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+
+                    <!-- Details -->
+                    <div class="p-3.5 flex-1 flex flex-col justify-between gap-3">
+                        <div>
+                            <div class="flex items-center justify-between text-xs text-slate-400 font-mono mb-1">
+                                <span>ID: ${item.code}</span>
+                            </div>
+                            <h3 class="font-bold text-slate-800 text-xs sm:text-sm line-clamp-2 leading-snug group-hover:text-meesho-600 transition-colors">
+                                ${item.title}
+                            </h3>
+                        </div>
+
+                        <div class="pt-2 border-t border-slate-100 flex flex-col gap-2">
+                            <div class="flex items-baseline gap-1">
+                                <span class="text-xs font-semibold text-slate-500">₹</span>
+                                <span class="text-base font-extrabold text-slate-900">${item.price}</span>
+                            </div>
+
+                            <a href="${item.link}" target="_blank" rel="noopener font-semibold" class="w-full bg-meesho-600 hover:bg-meesho-700 text-white py-2 rounded-lg text-xs font-bold flex items-center justify-center gap-1.5 transition-all active:scale-[0.98] shadow-xs">
+                                <span>Buy on Meesho</span>
+                                <i class="fas fa-arrow-right text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterCategory(category) {
+            currentCategory = category;
+            
+            // Update UI state of buttons
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                if(btn.dataset.category === category) {
+                    btn.className = 'category-btn active bg-slate-900 text-white px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all shadow-xs';
+                } else {
+                    btn.className = 'category-btn bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all';
+                }
+            });
+
+            renderGrid();
+        }
+
+        function handleSearch() {
+            searchQuery = document.getElementById('searchInput').value;
+            renderGrid();
+        }
+
+        function handleMobileSearch() {
+            searchQuery = document.getElementById('mobileSearchInput').value;
+            renderGrid();
+        }
+
+        function resetFilters() {
+            searchQuery = '';
+            document.getElementById('searchInput').value = '';
+            document.getElementById('mobileSearchInput').value = '';
+            filterCategory('All');
+        }
+
+        function openAddModal() {
+            const modal = document.getElementById('addModal');
+            const container = document.getElementById('modalContainer');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            container.classList.remove('scale-95');
+            container.classList.add('scale-100');
+        }
+
+        function closeAddModal() {
+            const modal = document.getElementById('addModal');
+            const container = document.getElementById('modalContainer');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            container.classList.remove('scale-100');
+            container.classList.add('scale-95');
+        }
+
+        function handleAddOutfit(e) {
+            e.preventDefault();
+            
+            const newOutfit = {
+                id: Date.now(),
+                title: document.getElementById('outfitTitle').value,
+                price: parseFloat(document.getElementById('outfitPrice').value),
+                code: document.getElementById('outfitCode').value,
+                category: document.getElementById('outfitCategory').value,
+                image: document.getElementById('outfitImageUrl').value,
+                link: document.getElementById('outfitLink').value
+            };
+
+            outfits.unshift(newOutfit);
+            renderGrid();
+            closeAddModal();
+            document.getElementById('addOutfitForm').reset();
+            showToast('New outfit successfully added to storefront!');
+        }
+
+        function copyCode(code) {
+            const tempInput = document.createElement('input');
+            tempInput.value = code;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            showToast(`Code copied: ${code}`);
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMsg').innerText = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        // Initialize on load
+        window.onload = function() {
+            renderGrid();
+        };
+    </script>
+</body>
+</html>
